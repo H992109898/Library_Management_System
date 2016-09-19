@@ -3,6 +3,8 @@
 //
 
 #pragma once
+#include "afxcmn.h"
+#include "afxwin.h"
 
 
 // Cmedia_library_management_systemDlg 对话框
@@ -29,4 +31,9 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	// 展示板控件变量
+	CListCtrl m_list_show;
+	// 组合框类型
+	CComboBox m_combo_objtype;
 };

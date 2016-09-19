@@ -57,6 +57,8 @@ Cmedia_library_management_systemDlg::Cmedia_library_management_systemDlg(CWnd* p
 void Cmedia_library_management_systemDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST_SHOW, m_list_show);
+	DDX_Control(pDX, IDC_SEL_OBJ_TYPE, m_combo_objtype);
 }
 
 BEGIN_MESSAGE_MAP(Cmedia_library_management_systemDlg, CDialogEx)
