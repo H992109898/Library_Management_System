@@ -1,0 +1,2 @@
+# Library_Management_System
+基于MFC和mySQL的媒体库管理系统
