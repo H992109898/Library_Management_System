@@ -35,7 +35,9 @@
 
 
 
-
+//
+#include<fstream>
+static std::ofstream Log("log.txt");
 
 
 

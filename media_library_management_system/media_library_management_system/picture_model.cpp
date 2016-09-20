@@ -53,3 +53,9 @@ string picture_model::getProductionNationality(){
 string picture_model::setProductionNationality(string productionNationality){
 	return this->productionNationality = productionNationality;
 }
+
+
+//´ý²¹³ä
+bool picture_model::checkData(){
+	return true;
+}

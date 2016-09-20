@@ -84,3 +84,7 @@ string media_data_base::toString(){
 	temp += "  ";
 	return temp;
 }
+
+bool media_data_base::checkData(){
+	return true;
+}

@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <mysql.h> 
+#include <map>
+#include <vector>
 #include"book_model.h"
 #include"picture_model.h"
 #include"video_model.h"
+
 
 class sql_utils{
 public:
@@ -18,15 +21,25 @@ public:
 	MYSQL *myCont;
 
 	//custom methods 
-//	bool insert(const picture_model& picture);
-//	bool insert(const book_model& book);
-//	bool insert(const video_model& video);
+	bool insert(picture_model& picture);
+	bool insert(book_model& book);
+	bool insert(video_model& video);
 
-//	bool remove(const long long id);
+	bool erase(const long long id);
 	
-//	bool alter(const picture_model& old_picture, const picture_model& new_picture);
-//	bool alter(const book_model& old_book, const book_model& new_book);
-//	bool alter(const video_model& old_video, const video_model& new_video);
+	bool alter(const media_data_base& old_model, const media_data_base& new_model);
+
+	//vector[0~2]  分别用来存放book video picture的对象指针
+	bool searchByTitle(vector<media_data_base *>[]);
+	bool searchByType(vector<media_data_base *>[]);
+
+	// media_data_base 基类里面封装了type,直接判一下type来强制向下转型。return NULL for not found
+	media_data_base* searchById();
+
+
+	map<string, int> summary();
+
+	map<string, vector<media_data_base *>> showAll();
 
 	
 };
