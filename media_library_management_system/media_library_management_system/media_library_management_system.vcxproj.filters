@@ -36,6 +36,18 @@
     <ClInclude Include="sql_utils.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="book_model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="video_model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="picture_model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="media_data_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="media_library_management_system.cpp">
@@ -48,6 +60,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="sql_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="book_model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="video_model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="picture_model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="media_data_base.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
