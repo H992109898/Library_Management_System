@@ -15,6 +15,7 @@ public:
 		int height);
 	~picture_model();
 	string toString();
+	bool checkData();
 	int getWidth();
 	int setWidth(int width);
 	int getHeight();

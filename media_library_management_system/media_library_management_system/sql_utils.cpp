@@ -3,7 +3,8 @@
 #include "mysql.h"
 #include <cstdlib>
 #include <cstring>
-#include<fstream>
+#include <fstream>
+#include <sstream>
 
 #pragma comment(lib, "libmysql.lib")
 
@@ -20,69 +21,103 @@ sql_utils::sql_utils(){
 		"CREATE DATABASE IF NOT EXISTS media_library_management_system;",
 		"USE media_library_management_system;",
 
-		//create books table;
-		"CREATE TABLE IF NOT EXISTS books(id BIGINT UNSIGNED UNIQUE KEY NOT NULL,\
+		//create pictures table;
+		"CREATE TABLE IF NOT EXISTS pictures(id BIGINT UNSIGNED UNIQUE KEY NOT NULL,\
 		title VARCHAR(50) NOT NULL,\
 		author VARCHAR(30) NOT NULL DEFAULT 'UNKNOW',\
 		productionNationality VARCHAR(30) NOT NULL DEFAULT 'UNKNOW',\
 		classification INT UNSIGNED NOT NULL DEFAULT 1,\
 		width INT UNSIGNED NOT NULL DEFAULT 0,\
 		height INT UNSIGNED NOT NULL DEFAULT 0,\
-		hasVideoDisc BOOLEAN NOT NULL DEFAULT FALSE\
-		videoDiscId BIGINT UNSIGNED\
+		E_Resourse BOOLEAN NOT NULL DEFAULT FALSE);",
+		
+		//create videos table;   //production_time request param as string format yyyy-mm-dd; 
+		"CREATE TABLE IF NOT EXISTS videos(id BIGINT UNSIGNED UNIQUE KEY NOT NULL,\
+		title VARCHAR(50) NOT NULL,\
+		author VARCHAR(30) NOT NULL DEFAULT 'UNKNOW',\
+		classification INT UNSIGNED NOT NULL DEFAULT 1,\
+		producer VARCHAR(30) NOT NULL DEFAULT 'UNKNOW',\
+		production_time DATE,\
+		duration INT,\
 		E_Resourse BOOLEAN NOT NULL DEFAULT FALSE);",
 
-		//create videos table;
-		"CREATE TABLE vedios(...) IF NOT EXISTS;",
-		//create pictures table;
-		"CREATE TABLE pictures(...) IF NOT EXISTS;"};
+		//create books table;
+		"CREATE TABLE IF NOT EXISTS books(id BIGINT UNSIGNED UNIQUE KEY NOT NULL,\
+		title VARCHAR(50) NOT NULL,\
+		author VARCHAR(30) NOT NULL DEFAULT 'UNKNOW',\
+		classification INT UNSIGNED NOT NULL DEFAULT 1,\
+		publishing_company VARCHAR(50) NOT NULL DEFAULT 'UNKNOW',\
+		ISBN VARCHAR(50) NOT NULL,\
+		page INT,\
+		has_video_disc BOOLEAN NOT NULL DEFAULT FALSE,\
+	    video_disc_id BIGINT DEFAULT NULL,\
+		E_Resourse BOOLEAN NOT NULL DEFAULT FALSE);"};
 
 	
-	std::ofstream out("out.txt");
 
-
-	if (mysql_real_query(myCont, databaseInit[0], strlen(databaseInit[0]))!=0)
-	{
-		const char* pCh = mysql_error(myCont);
-		out << pCh << std::endl;
+	//init sql database and tables;
+	for (int i = 0; i < 5; i++){
+		if (mysql_real_query(myCont, databaseInit[i], strlen(databaseInit[i])) != 0)
+		{
+			const char* pCh = mysql_error(myCont);
+			Log << pCh << std::endl;
+		}
 	}
 
-	if (mysql_real_query(myCont, databaseInit[1], strlen(databaseInit[1])) != 0)
-	{
-		const char* pCh = mysql_error(myCont);
-		out << pCh << std::endl;
-	}
-
-	if (mysql_real_query(myCont, databaseInit[2], strlen(databaseInit[2])) != 0)
-	{
-		const char* pCh = mysql_error(myCont);
-		out << pCh << std::endl;
-	}
-	//mysql_real_query(myCont, databaseInit[1], strlen(databaseInit[1]));
-	//mysql_real_query(myCont, databaseInit[2], strlen(databaseInit[2]));
-	//mysql_real_query(myCont, databaseInit[3], strlen(databaseInit[3]));
-	//mysql_real_query(myCont, databaseInit[4], strlen(databaseInit[4]));
+	insert(picture_model(2, "title", "author", 1, false, "china", 200, 200));
 
 }
 
-/*
-bool sql_utils::insert(const picture_model& picture){
-	char* sqlQuery = new char[200];
-	sqlQuery = "INSERT INTO picture_table (id,title,author,productionNationality,classification,width,height,E_Resourse) VALUES(";
-	//strcat(sqlQuery, format)
-	if (mysql_real_query(myCont, sqlQuery, strlen(sqlQuery)) != 0){
+
+bool sql_utils::insert(picture_model& picture){
+	char* sqlQuery = new char[500];
+	std::stringstream sstr;
+	string sqlQueryCat("INSERT INTO pictures (id,title,author,productionNationality,classification,width,height,E_Resourse) VALUES(");
+	sstr << picture.getId() << ",'"
+		<< picture.getTitle() << "','"
+		<< picture.getAuthor() << "','"
+		<< picture.getProductionNationality() << "',"
+		<< picture.getClassification() << ","
+		<< picture.getWidth() << ","
+		<< picture.getHeight() << ","
+		<< picture.isE_Resourse() << ");";
+	sstr >> sqlQuery;
+	sqlQueryCat += sqlQuery;
+	Log << sqlQueryCat.c_str() << endl;
+	if (mysql_real_query(myCont, sqlQueryCat.c_str(), sqlQueryCat.length()) != 0){
 		const char* pCh = mysql_error(myCont);
-		//out << pCh << std::endl;
+		Log << pCh << std::endl;
 		//弹窗提醒插入失败并且给出报错信息。
+		delete sqlQuery;
+		return false;
 	}
+
+	delete sqlQuery;
 	return true;
 }
 
-bool sql_utils::insert(const book_model& picture){
+bool sql_utils::insert(book_model& book){
+	
 	return true;
 }
-bool sql_utils::insert(const video_model& picture){
+bool sql_utils::insert(video_model& picture){
 	return true;
 }
 
-*/
+//custom methods 
+
+bool erase(const long long id);
+
+bool alter(const media_data_base& old_model, const media_data_base& new_model);
+
+//vector[0~2]  分别用来存放book video picture的对象指针
+bool searchByTitle(vector<media_data_base *>[]);
+bool searchByType(vector<media_data_base *>[]);
+
+// media_data_base 基类里面封装了type,直接判一下type来强制向下转型。return NULL for not found
+media_data_base* searchById();
+
+
+map<string, int> summary();
+
+map<string, vector<media_data_base *>> showAll();

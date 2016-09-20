@@ -29,8 +29,9 @@ public:
 	bool isE_Resourse();
 	bool setE_Resourse(bool b);
 	virtual string toString();
+	virtual bool checkData();
 
-	static const int UNASSORTED= 1;  //未分级
+	static const int UNASSORTED = 1;  //未分级
 	static const int COMMON = 2;      //一般
 	static const int ADULT = 3;       //成人 
 	static const int CHILDREN = 4;    //儿童
@@ -38,7 +39,6 @@ public:
 	static const int VIDEO = 2;
 	static const int PICTURE = 3;
 
-protected:
 	long long id;
 	int type;
 	string title;
