@@ -1,26 +1,26 @@
 
-// media_library_management_system.cpp : 定义应用程序的类行为。
+// Library_Management_System.cpp : 定义应用程序的类行为。
 //
 
 #include "stdafx.h"
-#include "media_library_management_system.h"
-#include "media_library_management_systemDlg.h"
+#include "Library_Management_System.h"
+#include "Library_Management_SystemDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// Cmedia_library_management_systemApp
+// CLibrary_Management_SystemApp
 
-BEGIN_MESSAGE_MAP(Cmedia_library_management_systemApp, CWinApp)
+BEGIN_MESSAGE_MAP(CLibrary_Management_SystemApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// Cmedia_library_management_systemApp 构造
+// CLibrary_Management_SystemApp 构造
 
-Cmedia_library_management_systemApp::Cmedia_library_management_systemApp()
+CLibrary_Management_SystemApp::CLibrary_Management_SystemApp()
 {
 	// 支持重新启动管理器
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
@@ -30,14 +30,14 @@ Cmedia_library_management_systemApp::Cmedia_library_management_systemApp()
 }
 
 
-// 唯一的一个 Cmedia_library_management_systemApp 对象
+// 唯一的一个 CLibrary_Management_SystemApp 对象
 
-Cmedia_library_management_systemApp theApp;
+CLibrary_Management_SystemApp theApp;
 
 
-// Cmedia_library_management_systemApp 初始化
+// CLibrary_Management_SystemApp 初始化
 
-BOOL Cmedia_library_management_systemApp::InitInstance()
+BOOL CLibrary_Management_SystemApp::InitInstance()
 {
 	// 如果一个运行在 Windows XP 上的应用程序清单指定要
 	// 使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式，
@@ -70,7 +70,7 @@ BOOL Cmedia_library_management_systemApp::InitInstance()
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
 
-	Cmedia_library_management_systemDlg dlg;
+	CLibrary_Management_SystemDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

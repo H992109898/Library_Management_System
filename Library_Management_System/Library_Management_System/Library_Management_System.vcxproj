@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8EFA351D-1AAE-436F-8197-967C7361B726}</ProjectGuid>
-    <RootNamespace>media_library_management_system</RootNamespace>
+    <ProjectGuid>{68249CF4-7140-4127-9251-E4F32FD146C8}</ProjectGuid>
+    <RootNamespace>Library_Management_System</RootNamespace>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -43,7 +43,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Administrator\Desktop\MFC项目\Library_Management_System\media_library_management_system\media_library_management_system\include;C:\Users\lzp\Documents\GitHub\Library_Management_System\media_library_management_system\media_library_management_system\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Administrator\Desktop\mfc\Library_Management_System\Library_Management_System\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -103,45 +103,47 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="book_model.h" />
-    <ClInclude Include="media_data_base.h" />
-    <ClInclude Include="media_library_management_system.h" />
-    <ClInclude Include="media_library_management_systemDlg.h" />
-    <ClInclude Include="picture_model.h" />
+    <ClInclude Include="Dlg_Add.h" />
+    <ClInclude Include="Dlg_Detail.h" />
+    <ClInclude Include="Dlg_Find.h" />
+    <ClInclude Include="Dlg_Modify.h" />
+    <ClInclude Include="Library_Management_System.h" />
+    <ClInclude Include="Library_Management_SystemDlg.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="sql_utils.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="video_model.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="book_model.cpp" />
-    <ClCompile Include="media_data_base.cpp" />
-    <ClCompile Include="media_library_management_system.cpp" />
-    <ClCompile Include="media_library_management_systemDlg.cpp" />
-    <ClCompile Include="picture_model.cpp" />
+    <ClCompile Include="Dlg_Add.cpp" />
+    <ClCompile Include="Dlg_Detail.cpp" />
+    <ClCompile Include="Dlg_Find.cpp" />
+    <ClCompile Include="Dlg_Modify.cpp" />
+    <ClCompile Include="Library_Management_System.cpp" />
+    <ClCompile Include="Library_Management_SystemDlg.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="sql_utils.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="video_model.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="media_library_management_system.rc" />
+    <ResourceCompile Include="Library_Management_System.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\media_library_management_system.rc2" />
+    <None Include="res\Library_Management_System.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\media_library_management_system.ico" />
+    <Image Include="res\Library_Management_System.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="media_library_management_system.rc" />
+      <UserProperties RESOURCE_FILE="Library_Management_System.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

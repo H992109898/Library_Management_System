@@ -1,1 +1,0 @@
-INSERT INTO pictures (id,title,author,productionNationality,classification,width,height,E_Resourse) VALUES(2,'title','author','china',1,200,200,0);

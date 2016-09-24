@@ -2,6 +2,7 @@
 // stdafx.h : 标准系统包含文件的包含文件，
 // 或是经常使用但不常更改的
 // 特定于项目的包含文件
+
 #pragma once
 
 #ifndef VC_EXTRALEAN
@@ -31,13 +32,6 @@
 #endif // _AFX_NO_AFXCMN_SUPPORT
 
 #include <afxcontrolbars.h>     // 功能区和控件条的 MFC 支持
-
-
-
-
-//
-#include<fstream>
-static std::ofstream Log("log.txt");
 
 
 
